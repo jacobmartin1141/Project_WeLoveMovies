@@ -5,9 +5,10 @@ exports.up = function(knex) {
       table.string("title");
       table.integer("runtime_in_minutes");
       table.string("rating");
-      table.string("description");
+      table.text("description", 'longtext');
       table.string("image_url");
-  })
+  }).then(() => console.log)
+  .catch((e) => console.log(e));
 };
 
 exports.down = function(knex) {

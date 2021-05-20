@@ -14,9 +14,16 @@ const generateMoviesTheatersJoins = (movieIds, theaterIds) => {
 };
 
 exports.seed = async function (knex) {
-  const movieIds = await knex("movies").select("movie_id");
-  const theaterIds = await knex("theaters").select("theater_id");
+  try {
+    const movieIds = await knex("movies").select("movie_id");
+    const theaterIds = await knex("theaters").select("theater_id");
+  
+    const joins = generateMoviesTheatersJoins(movieIds, theaterIds);
+    return knex("movies_theaters").insert(joins);
 
-  const joins = generateMoviesTheatersJoins(movieIds, theaterIds);
-  return knex("movies_theaters").insert(joins);
+  } catch(error) {
+    
+    console.log(error);
+  }
+  
 };
