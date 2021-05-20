@@ -12,3 +12,4 @@ knexfile.js
 test/routes/movies.test.js
 test/routes/reviews.test.js
 test/routes/theaters.test.js
+node_modules
